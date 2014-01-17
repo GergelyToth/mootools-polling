@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mootools Test Drive</title>
+
+<!-- Load Mootools 1.4.5 -->
+<script src="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>
+
+<script type="text/javascript">
+
+window.addEvent('domready', function() {
+    var requestData = new Request.HTML ({
+        url: 'data.txt',
+        update: $('updateMe'),
+        onComplete: function(){console.log('polling complete!')}
+    });
+    var sendItAgain = function() {
+        requestData.send();
+    }
+    /* set periodical into action!  once every second */
+    var periodicalID = sendItAgain.periodical(1000);
+});
+
+</script>
+</head>
+<body>
+
+<div id="updateMe"> </div>
+
+</body>
+</html>
